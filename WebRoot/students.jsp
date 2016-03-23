@@ -4,10 +4,9 @@
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+	+ request.getServerName() + ":" + request.getServerPort()
+	+ path + "/";
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -31,7 +30,7 @@
 <body>
 	<%
 		List<Student> students = (List<Student>) request
-				.getAttribute("students");
+			.getAttribute("students");
 	%>
 
 	<table>
@@ -41,6 +40,7 @@
 			<th>passWord</th>
 			<th>createTime</th>
 			<th>status</th>
+			<th>DELETE</th>
 		</tr>
 		<%
 			for (Student student : students) {
@@ -49,8 +49,9 @@
 			<td><%=student.getId()%></td>
 			<td><%=student.getUserName()%></td>
 			<td><%=student.getPassWord()%></td>
-			<td><%=sdf.format(student.getCreateTime()) %></td>
+			<td><%=sdf.format(student.getCreateTime())%></td>
 			<td><%=student.getStatus()%></td>
+			<td><a href="deleteStudentServlet?id=<%=student.getId()%>">delete</a></td>
 		</tr>
 
 		<%
